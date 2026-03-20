@@ -1,24 +1,21 @@
 package com.weg.pedido.service;
 
-import com.weg.pedido.dto.PedidoRequestDto;
-import com.weg.pedido.dto.PedidoResponseDto;
+import com.weg.pedido.dto.pedido.PedidoRequestDto;
+import com.weg.pedido.dto.pedido.PedidoResponseDto;
 import com.weg.pedido.mapper.PedidoMapper;
 import com.weg.pedido.model.Pedido;
 import com.weg.pedido.repository.PedidoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PedidoService  {
 
     private final PedidoMapper pedidoMapper;
     private final PedidoRepository pedidoRepository;
-
-    public PedidoService(PedidoMapper pedidoMapper, PedidoRepository pedidoRepository) {
-        this.pedidoMapper = pedidoMapper;
-        this.pedidoRepository = pedidoRepository;
-    }
 
     public PedidoResponseDto criarPedido() {
         return pedidoMapper.paraResposta(pedidoRepository.save(new Pedido()));

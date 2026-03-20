@@ -1,7 +1,7 @@
 package com.weg.pedido.mapper;
 
-import com.weg.pedido.dto.PedidoRequestDto;
-import com.weg.pedido.dto.PedidoResponseDto;
+import com.weg.pedido.dto.pedido.PedidoRequestDto;
+import com.weg.pedido.dto.pedido.PedidoResponseDto;
 import com.weg.pedido.model.Pedido;
 import org.springframework.stereotype.Component;
 

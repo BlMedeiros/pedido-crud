@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "pedido")
 @Getter
@@ -15,12 +16,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedido {
+
+    public Pedido(Long id, LocalDateTime dataPedido) {
+        this.id = id;
+        this.dataPedido = dataPedido;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "data_pedido")
     private LocalDateTime dataPedido;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itens;
 
     @PrePersist
     private void quandoCriar() {

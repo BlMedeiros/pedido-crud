@@ -1,10 +1,9 @@
 package com.weg.pedido.controller;
 
-import com.weg.pedido.dto.PedidoRequestDto;
-import com.weg.pedido.dto.PedidoResponseDto;
+import com.weg.pedido.dto.pedido.PedidoRequestDto;
+import com.weg.pedido.dto.pedido.PedidoResponseDto;
 import com.weg.pedido.service.PedidoService;
 import jakarta.validation.Valid;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

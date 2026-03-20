@@ -1,8 +1,8 @@
-package com.weg.pedido.dto;
+package com.weg.pedido.dto.pedido;
 
 import java.time.LocalDateTime;
 
-public record PedidoRequestDto(
+public record PedidoResponseDto(
         long id,
         LocalDateTime dataPedido
 ) { }
