@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -16,8 +17,13 @@ import java.time.LocalDateTime;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, name = "data_pedido")
     private LocalDateTime dataPedido;
+
+    @PrePersist
+    private void quandoCriar() {
+        this.dataPedido = LocalDateTime.now();
+    }
 }

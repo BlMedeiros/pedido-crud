@@ -20,13 +20,11 @@ public class PedidoService  {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public PedidoResponseDto criarPedido(PedidoRequestDto pedidoRequestDto) {
-        Pedido pedido = pedidoMapper.paraEntidade(pedidoRequestDto);
-
-        return pedidoMapper.paraResposta(pedidoRepository.save(pedido));
+    public PedidoResponseDto criarPedido() {
+        return pedidoMapper.paraResposta(pedidoRepository.save(new Pedido()));
     }
 
-    public PedidoResponseDto buscarPedidoPorId(long id) {
+    public PedidoResponseDto buscarPedidoPorId(Long id) {
         return pedidoRepository.findById(id)
                 .map(pedidoMapper::paraResposta)
                 .orElseThrow(() -> new RuntimeException("Pedido não Encontrado!"));
@@ -39,7 +37,7 @@ public class PedidoService  {
                 .toList();
     }
 
-    public PedidoResponseDto atualizarPedido(long id, PedidoRequestDto pedidoRequestDto) {
+    public PedidoResponseDto atualizarPedido(Long id, PedidoRequestDto pedidoRequestDto) {
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não Encontrado"));
 
@@ -50,7 +48,7 @@ public class PedidoService  {
 
     }
 
-    public void deletarPedido(long id) {
+    public void deletarPedido(Long id) {
         if(!pedidoRepository.existsById(id)) {
             throw new RuntimeException("Pedido não Encontrado");
         }

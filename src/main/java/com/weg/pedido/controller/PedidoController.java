@@ -20,12 +20,12 @@ public class PedidoController {
     }
 
     @PostMapping
-    public PedidoResponseDto criarPedido(@RequestBody @Valid PedidoRequestDto pedidoRequestDto) {
-        return pedidoService.criarPedido(pedidoRequestDto);
+    public PedidoResponseDto criarPedido() {
+        return pedidoService.criarPedido();
     }
 
-    @GetMapping("/id")
-    public PedidoResponseDto buscarPedidoPorId(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public PedidoResponseDto buscarPedidoPorId(@PathVariable Long id) {
         return pedidoService.buscarPedidoPorId(id);
     }
 
@@ -34,13 +34,13 @@ public class PedidoController {
         return pedidoService.buscarTodosOsPedidos();
     }
 
-    @PutMapping("/id")
-    public PedidoResponseDto atualizarPedido(@PathVariable long id, @RequestBody @Valid PedidoRequestDto pedidoRequestDto) {
+    @PutMapping("/{id}")
+    public PedidoResponseDto atualizarPedido(@PathVariable Long id, @RequestBody @Valid PedidoRequestDto pedidoRequestDto) {
         return pedidoService.atualizarPedido(id,pedidoRequestDto);
     }
 
-    @DeleteMapping("/id")
-    public void deletarPedido(@PathVariable long id) {
+    @DeleteMapping("/{id}")
+    public void deletarPedido(@PathVariable Long id) {
         pedidoService.deletarPedido(id);
     }
 }
